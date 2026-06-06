@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كفتة كرسبي - Kofta Krispy | الطعم الأصلي للقرمشة</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#FFD100', // Approximate Yellow from Logo
+                            red: '#E31837',    // Approximate Red from Logo
+                            dark: '#121212',
+                            card: '#1C1C1E',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+    
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300 py-3">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 flex justify-between items-center">
+            
+            
+            <div class="flex items-center gap-3">
+                <img src="logo.jpg" alt="Kofta Krispy Logo" class="w-14 h-14 md:w-16 md:h-16 rounded-full border-2 border-brand-yellow object-cover bg-black">
+                <div class="hidden md:block">
+                    <h1 class="text-xl font-black tracking-tight text-white m-0 leading-tight">كفتة كرسبي</h1>
+                    <p class="text-xs text-brand-yellow font-bold uppercase tracking-widest">Kofta Krispy</p>
+                </div>
+            </div>
+
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#home" class="text-sm font-bold text-white hover:text-brand-yellow transition-colors">الرئيسية</a>
+                <a href="#menu" class="text-sm font-bold text-white hover:text-brand-yellow transition-colors">قائمة الطعام</a>
+                <a href="#about" class="text-sm font-bold text-gray-400 hover:text-white transition-colors">من نحن</a>
+            </div>
+
+            
+            <div class="flex items-center gap-4 relative group">
+                <button class="relative flex items-center justify-center w-12 h-12 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors">
+                    <i class="fa-solid fa-basket-shopping text-xl text-gray-300 group-hover:text-brand-yellow transition-colors"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-brand-red text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-zinc-900 hidden">0</span>
+                </button>
+                
+                
+                <div class="absolute top-full left-0 mt-4 w-80 bg-brand-card border border-zinc-800 rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform origin-top-left group-hover:translate-y-0 translate-y-2">
+                    <div class="p-4 border-b border-zinc-800 flex justify-between items-center">
+                        <h3 class="font-bold text-white">سلة المشتريات</h3>
+                        <span class="text-xs bg-zinc-800 text-gray-300 px-2 py-1 rounded-md"><span id="dropdown-count">0</span> عناصر</span>
+                    </div>
+                    
+                    <div id="cart-dropdown-items" class="max-h-72 overflow-y-auto p-2 custom-scrollbar">
+                        <div class="text-center p-6 text-zinc-500 text-sm">السلة فارغة حالياً</div>
+                    </div>
+                    
+                    <div class="p-4 border-t border-zinc-800 bg-zinc-900/50 rounded-b-2xl">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-400 text-sm">الإجمالي</span>
+                            <span class="text-brand-yellow font-bold text-lg"><span id="dropdown-total">0</span> ج.م</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="clearCart()" class="px-3 py-2.5 bg-zinc-800 text-zinc-400 rounded-xl hover:bg-brand-red hover:text-white transition-colors text-sm" title="إفراغ السلة">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                            <button class="flex-grow py-2.5 bg-brand-yellow text-zinc-950 font-bold rounded-xl hover:bg-yellow-300 transition-colors text-sm shadow-[0_0_10px_rgba(255,209,0,0.2)]">
+                                إتمام الطلب
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+    <section id="home" class="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+        
+        <div class="absolute inset-0 w-full h-full">
+            <img src="7_2.jpg" alt="Hero Background" class="w-full h-full object-cover object-center filter grayscale-[20%]">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
+            <span class="inline-block py-1 px-3 rounded-full bg-brand-red/20 text-brand-red font-bold text-sm mb-4 border border-brand-red/30">
+                <i class="fa-solid fa-fire mr-1"></i> تجربة طعم استثنائية
+            </span>
+            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight text-shadow-lg">
+                قرمشة <span class="text-brand-yellow">الكفتة</span><br>على أصولها
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-medium leading-relaxed">
+                اكتشف ثورة في عالم الكفتة! نجمع بين الطعم الشرقي الأصيل والقرمشة العصرية مع تشكيلة من الصوصات المبتكرة التي ستأخذ حواسك في رحلة لا تُنسى.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#menu" class="px-8 py-4 bg-brand-yellow text-zinc-950 font-bold rounded-xl hover:bg-yellow-300 transition-all transform hover:-translate-y-1 shadow-[0_0_15px_rgba(255,209,0,0.4)] text-lg flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-utensils"></i> تصفح المنيو
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="menu" class="py-20 md:py-32 bg-[#0a0a0a] relative">
+        
+        <div class="absolute inset-0 opacity-[0.02] pointer-events-none" style="background-image: radial-gradient(#FFD100 1px, transparent 1px); background-size: 30px 30px;"></div>
+        
+        <div class="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-black text-white mb-4">قائمة <span class="text-brand-yellow">السعادة</span></h2>
+                <div class="w-24 h-1 bg-brand-red mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-400 font-medium">اختر ما يشتهيه قلبك من إبداعات كفتة كرسبي</p>
+            </div>
+
+            
+            <div id="category-buttons" class="flex flex-wrap justify-center gap-3 mb-12">
+                
+            </div>
+
+            
+            <div id="products-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
+                
+            </div>
+        </div>
+    </section>
+
+    
+    <footer id="about" class="bg-brand-dark border-t border-zinc-800 pt-16 pb-8 relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 text-center md:text-right">
+                
+                
+                <div class="flex flex-col items-center md:items-start">
+                    <img src="logo.jpg" alt="Logo" class="w-20 h-20 rounded-full border-2 border-brand-yellow mb-4 bg-black object-cover">
+                    <h3 class="text-2xl font-black text-white mb-2">كفتة كرسبي</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-xs">
+                        نقدم لك مفهوم جديد للكفتة المصرية بلمسة كرسبي عالمية وجودة لا تقبل المنافسة.
+                    </p>
+                </div>
+
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6 relative inline-block">
+                        تواصل معنا
+                        <span class="absolute -bottom-2 right-0 w-1/2 h-0.5 bg-brand-yellow"></span>
+                    </h4>
+                    <ul class="space-y-4 text-gray-400 text-sm">
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fa-solid fa-location-dot text-brand-red"></i>
+                            القاهرة، مدينة نصر، شارع الطيران
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fa-solid fa-phone text-brand-red"></i>
+                            <span dir="ltr">+20 123 456 7890</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fa-solid fa-clock text-brand-red"></i>
+                            يومياً من 12 ظهراً حتى 2 صباحاً
+                        </li>
+                    </ul>
+                </div>
+
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6 relative inline-block">
+                        تابعنا
+                        <span class="absolute -bottom-2 right-0 w-1/2 h-0.5 bg-brand-yellow"></span>
+                    </h4>
+                    <div class="flex items-center justify-center md:justify-start gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-white hover:bg-brand-yellow hover:text-black transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-white hover:bg-brand-yellow hover:text-black transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-white hover:bg-brand-yellow hover:text-black transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-zinc-800 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-zinc-500 font-medium">
+                <p>&copy; 2026 كفتة كرسبي. جميع الحقوق محفوظة.</p>
+                <p class="mt-2 md:mt-0">صُنع بحب في مصر</p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
